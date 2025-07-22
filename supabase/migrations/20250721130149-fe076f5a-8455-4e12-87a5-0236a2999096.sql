@@ -169,3 +169,45 @@ CREATE POLICY "Authenticated delete for spoilage_profiles" ON public.spoilage_pr
 CREATE POLICY "Authenticated insert for cold_storage" ON public.cold_storage FOR INSERT TO authenticated WITH CHECK (true);
 CREATE POLICY "Authenticated update for cold_storage" ON public.cold_storage FOR UPDATE TO authenticated USING (true);
 CREATE POLICY "Authenticated delete for cold_storage" ON public.cold_storage FOR DELETE TO authenticated USING (true);
+
+-- Enable RLS on each flagged table
+ALTER TABLE public.ports ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.trucks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.markets ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.market_demand ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.spoilage_profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.cold_storage ENABLE ROW LEVEL SECURITY;
+
+-- Example: allow public read (adjust for your app's access rules)
+CREATE POLICY "Public can read ports" ON public.ports FOR SELECT USING (true);
+CREATE POLICY "Public can read trucks" ON public.trucks FOR SELECT USING (true);
+CREATE POLICY "Public can read markets" ON public.markets FOR SELECT USING (true);
+CREATE POLICY "Public can read market_demand" ON public.market_demand FOR SELECT USING (true);
+CREATE POLICY "Public can read spoilage_profiles" ON public.spoilage_profiles FOR SELECT USING (true);
+CREATE POLICY "Public can read cold_storage" ON public.cold_storage FOR SELECT USING (true);
+
+-- Example: authenticated users can edit (modify as needed)
+CREATE POLICY "Authenticated insert ports" ON public.ports FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Authenticated update ports" ON public.ports FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Authenticated delete ports" ON public.ports FOR DELETE TO authenticated USING (true);
+
+CREATE POLICY "Authenticated insert trucks" ON public.trucks FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Authenticated update trucks" ON public.trucks FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Authenticated delete trucks" ON public.trucks FOR DELETE TO authenticated USING (true);
+
+CREATE POLICY "Authenticated insert markets" ON public.markets FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Authenticated update markets" ON public.markets FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Authenticated delete markets" ON public.markets FOR DELETE TO authenticated USING (true);
+
+CREATE POLICY "Authenticated insert market_demand" ON public.market_demand FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Authenticated update market_demand" ON public.market_demand FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Authenticated delete market_demand" ON public.market_demand FOR DELETE TO authenticated USING (true);
+
+CREATE POLICY "Authenticated insert spoilage_profiles" ON public.spoilage_profiles FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Authenticated update spoilage_profiles" ON public.spoilage_profiles FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Authenticated delete spoilage_profiles" ON public.spoilage_profiles FOR DELETE TO authenticated USING (true);
+
+CREATE POLICY "Authenticated insert cold_storage" ON public.cold_storage FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Authenticated update cold_storage" ON public.cold_storage FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Authenticated delete cold_storage" ON public.cold_storage FOR DELETE TO authenticated USING (true);
+
